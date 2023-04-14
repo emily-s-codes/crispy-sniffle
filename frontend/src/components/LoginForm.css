@@ -1,0 +1,40 @@
+.loginFormSection {
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.inputFieldsSection {
+    display: flex;
+    gap: 20px;
+}
+
+.inputFieldsSection input {
+    padding: 5px;
+    width: 80%;
+    background: none;
+    border: 1px solid black;
+    border-radius: 12px;
+    color: white;
+}
+
+.loginFormSection input::placeholder {
+    color: white;
+    text-align: center;
+}
+
+.loginFormSection input:focus {
+    outline: none;
+    border: 1px solid white;
+}
+
+.loginFormClickableText {
+    cursor: pointer;
+    color: white;
+}
+
+.loginFormClickableText:hover {
+    text-decoration: underline;
+}
