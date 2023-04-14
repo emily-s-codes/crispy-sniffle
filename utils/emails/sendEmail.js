@@ -2,6 +2,10 @@ import nodemailer from 'nodemailer'
 import Handlebars from 'handlebars'
 import fs from 'fs'
 import path from 'path'
+import { fileURLToPath } from 'url';
+
+const _filename = fileURLToPath(import.meta.url)
+const _dirname = path.dirname(_filename)
 
 export const sendEmail = async (email, subject, payload, template) => {
     console.log('sending email')
@@ -16,19 +20,18 @@ export const sendEmail = async (email, subject, payload, template) => {
         })
 
         const source = fs.readFileSync(path.join(_dirname, template), "utf8")
+        console.log(source)
         const compiledTemplate = Handlebars.compile(source)
 
-        const options = () => {
-            return {
-                from: process.env.FROM_EMAIL,
-                to: email,
-                subject: subject,
-                html: compiledTemplate(payload)
-            }
+        const message = {
+            from: process.env.FROM_EMAIL,
+            to: email,
+            subject: subject,
+            html: compiledTemplate(payload)
         }
 
-        transporter.sendMail(options(), (error, info) => {
-            console.log(info)
+
+        transporter.sendMail(message, (error, _) => {
             if (error) {
                 return error
             } else {
@@ -40,6 +43,7 @@ export const sendEmail = async (email, subject, payload, template) => {
         })
 
     } catch (error) {
+        console.log(error.message)
         return error
     }
 }

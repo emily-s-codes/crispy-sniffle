@@ -13,6 +13,7 @@ await connection()
 
 app.use(cors())
 app.use(express.json())
+
 app.use((error, _, res, next) => {
     res.status(500).json({ error: error.message })
 })

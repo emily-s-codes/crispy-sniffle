@@ -7,7 +7,7 @@ import Token from '../models/token.model.js'
 import { sendEmail } from '../utils/emails/sendEmail.js'
 
 const JWTSecret = process.env.JWT_SECRET
-const bcryptSalt = process.env.VCRYPT_SALT
+const bcryptSalt = process.env.BCRYPT_SALT
 const clientURL = process.env.CLIENT_URL
 
 export const signup = async (data) => {
