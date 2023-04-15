@@ -1,9 +1,14 @@
-import { requestPasswordReset, resetPassword, signup } from "../services/auth.service.js";
+import { requestPasswordReset, resetPassword, signin, signup } from "../services/auth.service.js";
 
 
 export const signUpController = async (req, res) => {
     const signupService = await signup(req.body);
     return res.json(signupService);
+};
+
+export const signInController = async (req, res) => {
+    const signinService = await signin(req.body)
+    return res.json(signinService);
 };
 
 export const resetPasswordRequestController = async (req, res) => {

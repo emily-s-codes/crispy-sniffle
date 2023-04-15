@@ -21,9 +21,17 @@ export const signup = async (data) => {
     return (data = {
         userId: user._id,
         email: user.email,
-        name: user.name,
+        firstName: user.firstName,
+        lastName: user.lastName,
         token: token
     })
+}
+export const signin = async (data) => {
+    let user = await User.findOne({ email: data.email })
+    if (user.password = data.password) {
+        return user
+    }
+    else throw new Error('problem with sign in ')
 }
 
 export const requestPasswordReset = async (email) => {

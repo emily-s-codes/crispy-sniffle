@@ -1,0 +1,14 @@
+.pageNotFoundMain {
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.pageNotFoundMain h1,
+.pageNotFoundMain h2,
+.pageNotFoundMain p,
+.pageNotFoundMain a {
+    color: white;
+}

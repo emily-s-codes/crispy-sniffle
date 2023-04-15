@@ -5,11 +5,16 @@ const { Schema, model } = mongoose
 const bcryptSalt = process.env.BCRYPT_SALT
 
 const userSchema = new Schema({
-    name: {
+    firstName: {
         type: String,
-        trim: true,
+        // trim: true,
         required: true,
         // unique: true I FIND THIS UNNECESSARY
+    },
+    lastName: {
+        type: String,
+        // trim: true,
+        required: false,
     },
     email: {
         type: String,
