@@ -24,6 +24,10 @@ app.use((error, _, res, next) => {
     res.status(500).json({ error: error.message })
 })
 
+app.get('/', (_, res) => {
+    res.status(200).send('ALL GOOD :)')
+})
+
 app.post("/api/auth/signup", formReader.none(), signUpController);
 app.post("/api/auth/signin", formReader.none(), signInController);
 app.post("/api/auth/requestResetPassword", resetPasswordRequestController);
