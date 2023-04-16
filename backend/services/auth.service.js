@@ -2,8 +2,8 @@ import JWT from 'jsonwebtoken'
 import crypto from 'crypto'
 import bcrypt from 'bcrypt'
 
-import User from '../models/user.model.js'
-import Token from '../models/token.model.js'
+import User from '../models/user.js'
+import Token from '../models/token.js'
 import { sendEmail } from '../utils/emails/sendEmail.js'
 
 const JWTSecret = process.env.JWT_SECRET
