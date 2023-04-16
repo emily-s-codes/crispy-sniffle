@@ -35,11 +35,11 @@ export const signin = async (data) => {
 }
 
 export const requestPasswordReset = async (email) => {
-    const user = await User.findOne({ email })
+    const dbUser = await User.findOne({ email })
 
-    if (!user) throw new Error("Email does not exist")
+    if (!dbUser) throw new Error("Email does not exist")
 
-    let token = await Token.findOne({ userId: user._id })
+    let token = await Token.findOne({ userId: dbUser._id })
     if (token) await token.deleteOne()
 
     let resetToken = crypto.randomBytes(32).toString("hex")
@@ -47,16 +47,17 @@ export const requestPasswordReset = async (email) => {
     const hash = await bcrypt.hash(resetToken, Number(bcryptSalt))
 
     await new Token({
-        userId: user._id,
+        userId: dbUser._id,
         token: hash,
         createdAt: Date.now()
     }).save()
+    console.log('dbuser', dbUser.firstName)
+    const link = `${clientURL}/passwordReset?token=${resetToken}&id=${dbUser._id}`
 
-    const link = `${clientURL}/passwordReset?token=${resetToken}&id=${user._id}`
     sendEmail(
-        user.email,
+        dbUser.email,
         "Password Reset Request",
-        { name: user.name, link: link },
+        { name: dbUser.firstName, link: link },
         "./template/requestResetPassword.handlebars")
     return link
 }

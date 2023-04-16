@@ -30,7 +30,7 @@ app.get('/', (_, res) => {
 
 app.post("/api/auth/signup", formReader.none(), signUpController);
 app.post("/api/auth/signin", formReader.none(), signInController);
-app.post("/api/auth/requestResetPassword", resetPasswordRequestController);
+app.post("/api/auth/requestResetPassword", formReader.none(), resetPasswordRequestController);
 app.post("/api/auth/resetPassword", resetPasswordController);
 
 app.listen(PORT, () => {

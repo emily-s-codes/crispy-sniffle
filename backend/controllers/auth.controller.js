@@ -12,6 +12,7 @@ export const signInController = async (req, res) => {
 };
 
 export const resetPasswordRequestController = async (req, res) => {
+    console.log(req.body)
     const requestPasswordResetService = await requestPasswordReset(
         req.body.email
     );

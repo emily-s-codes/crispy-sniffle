@@ -16,7 +16,6 @@ const LoginForm = ({ setForgotPassword }) => {
             body: form
         })
         if (response.ok) {
-            console.log('response ok')
             isRegistered ? nav('/dashboard') : setIsRegistered(true)
         }
         else {

@@ -20,7 +20,7 @@ export const sendEmail = async (email, subject, payload, template) => {
         })
 
         const source = fs.readFileSync(path.join(_dirname, template), "utf8")
-        console.log(source)
+        console.log(payload)
         const compiledTemplate = Handlebars.compile(source)
 
         const message = {
